@@ -1,0 +1,166 @@
+======================================================================
+  AUTOMATED TEST -- client/server socket communication
+======================================================================
+  Starting server.py on 127.0.0.1:14857 ...
+  Server is up. Running test cases ...
+
+  [PASS] T1  single message is acknowledged
+         server replied: "Message received (32 chars / 32 bytes) - thank you, client #2"
+  [PASS] T2  five more clients served one after another
+         server numbered them [3, 4, 5, 6, 7] (each exactly +1): True
+  [PASS] T3  UTF-8 text survives the round trip
+         45 chars sent, server interpreted them correctly: True
+  [PASS] T4  5000-character message is reassembled correctly
+         server replied: "Message received (5000 chars / 5000 bytes) - thank you, client #9"
+  [PASS] T5  server survives a client that hangs up silently
+         next client was still served normally
+  [PASS] T6  empty message gets no bogus confirmation
+         server closed the connection without replying (correct)
+
+======================================================================
+  SERVER TERMINAL OUTPUT (captured while the tests ran)
+======================================================================
+==============================================================
+  SOCKET SERVER -- Inter-Process Communication (Session 3)
+==============================================================
+  Listening on  : 127.0.0.1:14857
+  Local IP hint : 192.168.101.3
+  Clients       : sequential (one at a time)
+  Per connection: 1 message per connection, then close (task spec)
+  Client timeout: 3 s
+  Press Ctrl+C to shut the server down.
+==============================================================
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #1 connected from 127.0.0.1:14859
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Client #1 (127.0.0.1:14859) disconnected without sending data
+[13:25:32] Connection with client #1 closed (0 message(s) served)
+[13:25:32] Clients served so far: 1
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #2 connected from 127.0.0.1:14860
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #2 (127.0.0.1:14860):
+    "Hello server, this is client #1!"
+    length : 32 characters (32 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 10.1 ms)
+[13:25:32] Confirmation sent to client #2: "Message received (32 chars / 32 bytes) - thank you, client #2"
+[13:25:32] Connection with client #2 closed (1 message(s) served)
+[13:25:32] Clients served so far: 2
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #3 connected from 127.0.0.1:14862
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #3 (127.0.0.1:14862):
+    "Message number 2"
+    length : 16 characters (16 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #3: "Message received (16 chars / 16 bytes) - thank you, client #3"
+[13:25:32] Connection with client #3 closed (1 message(s) served)
+[13:25:32] Clients served so far: 3
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #4 connected from 127.0.0.1:14863
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #4 (127.0.0.1:14863):
+    "Message number 3"
+    length : 16 characters (16 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #4: "Message received (16 chars / 16 bytes) - thank you, client #4"
+[13:25:32] Connection with client #4 closed (1 message(s) served)
+[13:25:32] Clients served so far: 4
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #5 connected from 127.0.0.1:14864
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #5 (127.0.0.1:14864):
+    "Message number 4"
+    length : 16 characters (16 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #5: "Message received (16 chars / 16 bytes) - thank you, client #5"
+[13:25:32] Connection with client #5 closed (1 message(s) served)
+[13:25:32] Clients served so far: 5
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #6 connected from 127.0.0.1:14865
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #6 (127.0.0.1:14865):
+    "Message number 5"
+    length : 16 characters (16 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #6: "Message received (16 chars / 16 bytes) - thank you, client #6"
+[13:25:32] Connection with client #6 closed (1 message(s) served)
+[13:25:32] Clients served so far: 6
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #7 connected from 127.0.0.1:14866
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #7 (127.0.0.1:14866):
+    "Message number 6"
+    length : 16 characters (16 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #7: "Message received (16 chars / 16 bytes) - thank you, client #7"
+[13:25:32] Connection with client #7 closed (1 message(s) served)
+[13:25:32] Clients served so far: 7
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #8 connected from 127.0.0.1:14867
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #8 (127.0.0.1:14867):
+    "Halo, apa kabar? Semoga lancar — salam dari 😀"
+    length : 45 characters (50 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #8: "Message received (45 chars / 50 bytes) - thank you, client #8"
+[13:25:32] Connection with client #8 closed (1 message(s) served)
+[13:25:32] Clients served so far: 8
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #9 connected from 127.0.0.1:14868
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #9 (127.0.0.1:14868):
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    length : 5000 characters (5000 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 0.2 ms)
+[13:25:32] Confirmation sent to client #9: "Message received (5000 chars / 5000 bytes) - thank you, client #9"
+[13:25:32] Connection with client #9 closed (1 message(s) served)
+[13:25:32] Clients served so far: 9
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #10 connected from 127.0.0.1:14869
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Client #10 (127.0.0.1:14869) disconnected without sending data
+[13:25:32] Connection with client #10 closed (0 message(s) served)
+[13:25:32] Clients served so far: 10
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #11 connected from 127.0.0.1:14870
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Message from client #11 (127.0.0.1:14870):
+    "still alive?"
+    length : 12 characters (12 bytes on the wire)
+    arrived: 2026-10-22 13:25:32 (read in 11.4 ms)
+[13:25:32] Confirmation sent to client #11: "Message received (12 chars / 12 bytes) - thank you, client #11"
+[13:25:32] Connection with client #11 closed (1 message(s) served)
+[13:25:32] Clients served so far: 11
+[13:25:32] Waiting for a client to connect ...
+==============================================================
+[13:25:32] Client #12 connected from 127.0.0.1:14872
+    accepted at 2026-10-22 13:25:32
+[13:25:32] Client #12 (127.0.0.1:14872) disconnected without sending data
+[13:25:32] Connection with client #12 closed (0 message(s) served)
+[13:25:32] Clients served so far: 12
+[13:25:32] Waiting for a client to connect ...
+======================================================================
+
+======================================================================
+  BONUS PHASE -- server_threaded.py (several clients at the same time)
+======================================================================
+  [PASS] T7  threaded server overlaps 4 clients in one 0.5 s window
+         peak simultaneous clients observed: 4, all four answered: True, wall clock 0.52s (sequential would need >= 2.0s)
+
+  (threaded server log: server_threaded_log.txt)
+  RESULT: 7/7 tests passed
+======================================================================
+  Server log saved to: server_log.txt
+  Client program      : client.py  (run it interactively)

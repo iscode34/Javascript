@@ -1,0 +1,156 @@
+
+========================================================================
+  PHASE A -- default server: 1 message per connection (the client reconnects)
+========================================================================
+  TERMINAL 1  $  python server.py --port 14880
+  TERMINAL 2  $  python client.py --port 14880
+========================================================================
+
+--- TERMINAL 2 (client) ---
+==============================================================
+  SOCKET CLIENT -- Inter-Process Communication (Session 3)
+==============================================================
+  Connecting to : 127.0.0.1:14880
+  Connected!     : local endpoint 127.0.0.1:14884
+  Type a message and press Enter.  /quit to exit.
+==============================================================
+
+You > Server > Message received (43 chars / 43 bytes) - thank you, client #2
+         (round-trip time: 0.63 ms)
+
+You >   (server closed the previous connection -- reconnecting ...)
+Server > Message received (37 chars / 37 bytes) - thank you, client #3
+         (round-trip time: 0.86 ms, after one reconnect)
+
+You >   (server closed the previous connection -- reconnecting ...)
+Server > Message received (44 chars / 50 bytes) - thank you, client #4
+         (round-trip time: 0.80 ms, after one reconnect)
+
+You > [INFO] Connection closed. Messages sent this session: 3
+
+--- TERMINAL 1 (server, what it printed meanwhile) ---
+==============================================================
+  SOCKET SERVER -- Inter-Process Communication (Session 3)
+==============================================================
+  Listening on  : 127.0.0.1:14880
+  Local IP hint : 192.168.101.3
+  Clients       : sequential (one at a time)
+  Per connection: 1 message per connection, then close (task spec)
+  Client timeout: 30 s
+  Press Ctrl+C to shut the server down.
+==============================================================
+[13:25:34] Waiting for a client to connect ...
+==============================================================
+[13:25:34] Client #1 connected from 127.0.0.1:14882
+    accepted at 2026-10-22 13:25:34
+[13:25:34] Client #1 (127.0.0.1:14882) disconnected without sending data
+[13:25:34] Connection with client #1 closed (0 message(s) served)
+[13:25:34] Clients served so far: 1
+[13:25:34] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #2 connected from 127.0.0.1:14884
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Message from client #2 (127.0.0.1:14884):
+    "Halo server, ini pesan pertama dari client."
+    length : 43 characters (43 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.4 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (43 chars / 43 bytes) - thank you, client #2"
+[13:25:35] Connection with client #2 closed (1 message(s) served)
+[13:25:35] Clients served so far: 2
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #3 connected from 127.0.0.1:14885
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Message from client #3 (127.0.0.1:14885):
+    "Pesan kedua: uji komunikasi dua arah."
+    length : 37 characters (37 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.1 ms)
+[13:25:35] Confirmation sent to client #3: "Message received (37 chars / 37 bytes) - thank you, client #3"
+[13:25:35] Connection with client #3 closed (1 message(s) served)
+[13:25:35] Clients served so far: 3
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #4 connected from 127.0.0.1:14886
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Message from client #4 (127.0.0.1:14886):
+    "Terakhir, pesan dengan emoji 🚀 dan aksen éèê"
+    length : 44 characters (50 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.2 ms)
+[13:25:35] Confirmation sent to client #4: "Message received (44 chars / 50 bytes) - thank you, client #4"
+[13:25:35] Connection with client #4 closed (1 message(s) served)
+[13:25:35] Clients served so far: 4
+[13:25:35] Waiting for a client to connect ...
+
+========================================================================
+  PHASE B -- server --messages 0: one connection stays open for all 3 messages
+========================================================================
+  TERMINAL 1  $  python server.py --port 14887 --messages 0
+  TERMINAL 2  $  python client.py --port 14887
+========================================================================
+
+--- TERMINAL 2 (client) ---
+==============================================================
+  SOCKET CLIENT -- Inter-Process Communication (Session 3)
+==============================================================
+  Connecting to : 127.0.0.1:14887
+  Connected!     : local endpoint 127.0.0.1:14890
+  Type a message and press Enter.  /quit to exit.
+==============================================================
+
+You > Server > Message received (43 chars / 43 bytes) - thank you, client #2
+         (round-trip time: 0.60 ms)
+
+You > Server > Message received (37 chars / 37 bytes) - thank you, client #2
+         (round-trip time: 0.19 ms)
+
+You > Server > Message received (44 chars / 50 bytes) - thank you, client #2
+         (round-trip time: 0.16 ms)
+
+You > [INFO] Connection closed. Messages sent this session: 3
+
+--- TERMINAL 1 (server, what it printed meanwhile) ---
+==============================================================
+  SOCKET SERVER -- Inter-Process Communication (Session 3)
+==============================================================
+  Listening on  : 127.0.0.1:14887
+  Local IP hint : 192.168.101.3
+  Clients       : sequential (one at a time)
+  Per connection: keep the connection open until the client hangs up
+  Client timeout: 30 s
+  Press Ctrl+C to shut the server down.
+==============================================================
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #1 connected from 127.0.0.1:14889
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Client #1 (127.0.0.1:14889) disconnected without sending data
+[13:25:35] Connection with client #1 closed (0 message(s) served)
+[13:25:35] Clients served so far: 1
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #2 connected from 127.0.0.1:14890
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Halo server, ini pesan pertama dari client."
+    length : 43 characters (43 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.4 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (43 chars / 43 bytes) - thank you, client #2"
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Pesan kedua: uji komunikasi dua arah."
+    length : 37 characters (37 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.1 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (37 chars / 37 bytes) - thank you, client #2"
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Terakhir, pesan dengan emoji 🚀 dan aksen éèê"
+    length : 44 characters (50 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.1 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (44 chars / 50 bytes) - thank you, client #2"
+[13:25:35] Client #2 (127.0.0.1:14890) closed the connection after 3 message(s)
+[13:25:35] Connection with client #2 closed (3 message(s) served)
+[13:25:35] Clients served so far: 2
+[13:25:35] Waiting for a client to connect ...
+
+========================================================================
+  Done. Both phases prove: the client can send message after message in a loop.
+  Logs: server_log.txt, server_log_keepalive.txt
+========================================================================
