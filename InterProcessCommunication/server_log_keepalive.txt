@@ -1,0 +1,40 @@
+==============================================================
+  SOCKET SERVER -- Inter-Process Communication (Session 3)
+==============================================================
+  Listening on  : 127.0.0.1:14887
+  Local IP hint : 192.168.101.3
+  Clients       : sequential (one at a time)
+  Per connection: keep the connection open until the client hangs up
+  Client timeout: 30 s
+  Press Ctrl+C to shut the server down.
+==============================================================
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #1 connected from 127.0.0.1:14889
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Client #1 (127.0.0.1:14889) disconnected without sending data
+[13:25:35] Connection with client #1 closed (0 message(s) served)
+[13:25:35] Clients served so far: 1
+[13:25:35] Waiting for a client to connect ...
+==============================================================
+[13:25:35] Client #2 connected from 127.0.0.1:14890
+    accepted at 2026-10-22 13:25:35
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Halo server, ini pesan pertama dari client."
+    length : 43 characters (43 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.4 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (43 chars / 43 bytes) - thank you, client #2"
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Pesan kedua: uji komunikasi dua arah."
+    length : 37 characters (37 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.1 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (37 chars / 37 bytes) - thank you, client #2"
+[13:25:35] Message from client #2 (127.0.0.1:14890):
+    "Terakhir, pesan dengan emoji 🚀 dan aksen éèê"
+    length : 44 characters (50 bytes on the wire)
+    arrived: 2026-10-22 13:25:35 (read in 0.1 ms)
+[13:25:35] Confirmation sent to client #2: "Message received (44 chars / 50 bytes) - thank you, client #2"
+[13:25:35] Client #2 (127.0.0.1:14890) closed the connection after 3 message(s)
+[13:25:35] Connection with client #2 closed (3 message(s) served)
+[13:25:35] Clients served so far: 2
+[13:25:35] Waiting for a client to connect ...

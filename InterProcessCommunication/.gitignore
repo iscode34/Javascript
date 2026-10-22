@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Temporary render / office artefacts
+.dsh-office-*/
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.tmp
+*.log.1
+
+# Note: server_log*.txt and demo_*_output.txt are kept on purpose — they are
+# the evidence transcripts referenced by the report.

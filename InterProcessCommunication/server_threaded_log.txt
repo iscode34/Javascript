@@ -1,0 +1,28 @@
+==============================================================
+  THREADED SOCKET SERVER -- concurrent variant (bonus)
+==============================================================
+  Listening on : 127.0.0.1:2868
+  Mode         : concurrent (one thread per client)
+  Ctrl+C to stop.
+==============================================================
+[13:37:57] [thread client-1] client #1 connected from 127.0.0.1:2870 (active: 1)
+[13:37:57] client #1 (127.0.0.1:2870) left without sending data
+[13:37:57] client #1 (127.0.0.1:2870) done (active: 0)
+[13:37:57] [thread client-2] client #2 connected from 127.0.0.1:2872 (active: 1)
+[13:37:57] [thread client-3] client #3 connected from 127.0.0.1:2871 (active: 2)
+[13:37:57] [thread client-4] client #4 connected from 127.0.0.1:2873 (active: 3)
+[13:37:57] [thread client-5] client #5 connected from 127.0.0.1:2874 (active: 4)
+[13:37:57] client #5 (127.0.0.1:2874) sent: "concurrent client 4"
+[13:37:57] client #3 (127.0.0.1:2871) sent: "concurrent client 1"
+[13:37:57] client #2 (127.0.0.1:2872) sent: "concurrent client 2"
+[13:37:57] client #4 (127.0.0.1:2873) sent: "concurrent client 3"
+[13:37:57] confirmation sent to client #5 (message 1)
+[13:37:57] client #5 (127.0.0.1:2874) hung up after 1 message(s)
+[13:37:57] confirmation sent to client #2 (message 1)
+[13:37:57] confirmation sent to client #4 (message 1)
+[13:37:57] confirmation sent to client #3 (message 1)
+[13:37:57] client #5 (127.0.0.1:2874) done (active: 3)
+[13:37:57] client #2 (127.0.0.1:2872) hung up after 1 message(s)
+[13:37:57] client #4 (127.0.0.1:2873) hung up after 1 message(s)
+[13:37:57] client #2 (127.0.0.1:2872) done (active: 2)
+[13:37:57] client #3 (127.0.0.1:2871) hung up after 1 message(s)
